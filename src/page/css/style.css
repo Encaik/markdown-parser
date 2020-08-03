@@ -99,3 +99,12 @@ code {
   padding: 0 5px;
   margin: 0 3px;
 }
+pre {
+  padding: 1rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  background-color: #22202e;
+  border-radius: 6px;
+  overflow: auto;
+  color: #fff;
+}

@@ -34,12 +34,6 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
     else if (/^(_|\*){2}[^_|\*]+(_|\*){2}$/.test(variable[index])) {
       _h.push(`<b>${variable[index].replace(/(_|\*){2}/g, "")}</b>`);
     }
-    // code
-    else if (/\`[^_|\*]+\`/.test(variable[index])) {
-      _h.push(
-        `${variable[index].replace(/\`/, "<code>").replace(/\`/, "</code>")}`
-      );
-    }
     // 链接
     else if (/^\[.*\]\(.*\)$/.test(variable[index])) {
       let text = variable[index].match(/\[.*\]/)[0].replace(/(\[|\])/g, "");
@@ -52,10 +46,28 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
       let href = variable[index].match(/\(.*\)/)[0].replace(/(\(|\))/g, "");
       _h.push(`<img src='${href}' width='100%' alt='${text}'/>`);
     }
+    // 代码块
+    else if (/^\`{3}/.test(variable[index])) {
+      let code = [];
+      for (let row = index + 1; row < variable.length; row++) {
+        if (!/^\`{3}/.test(variable[row])) {
+          code.push(variable[row]);
+        } else {
+          index = row;
+          break;
+        }
+      }
+      _h.push(`<pre>${code.join("\n")}</pre>`);
+    }
+    // 代码行
+    else if (/\`[^_|\*]+\`/.test(variable[index])) {
+      _h.push(
+        `${variable[index].replace(/\`/, "<code>").replace(/\`/, "</code>")}`
+      );
+    }
     // 嵌套区块
     // 列表
     // 表格
-    // 代码块
     // 空行
     else if (variable[index] === "") {
       _h.push(`<br/>`);
