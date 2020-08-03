@@ -8,6 +8,7 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
   let _h = [];
   for (let index = 0; index < variable.length; index++) {
     console.log(variable[index]);
+    // 标题
     if (/^#\s/.test(variable[index])) {
       _h.push(`<h1>${variable[index].replace("# ", "")}</h1>`);
     } else if (/^##\s/.test(variable[index])) {
@@ -20,9 +21,21 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
       _h.push(`<h5>${variable[index].replace("##### ", "")}</h5>`);
     } else if (/^######\s/.test(variable[index])) {
       _h.push(`<h6>${variable[index].replace("###### ", "")}</h6>`);
-    } else if (variable[index] === "") {
+    }
+    // 分割线
+    // 字体
+    // 链接
+    // 图片
+    // 嵌套区块
+    // 列表
+    // 表格
+    // 代码块
+    // 空行
+    else if (variable[index] === "") {
       _h.push(`<br/>`);
-    } else {
+    }
+    // 正文
+    else {
       _h.push(`<p>${variable[index]}</p>`);
     }
   }
