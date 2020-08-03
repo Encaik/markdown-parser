@@ -23,6 +23,9 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
       _h.push(`<h6>${variable[index].replace("###### ", "")}</h6>`);
     }
     // 分割线
+    else if (/^(-|_|\*){3}/.test(variable[index])) {
+      _h.push(`<hr/>`);
+    }
     // 字体
     // 链接
     // 图片

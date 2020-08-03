@@ -86,3 +86,9 @@ h5:hover::before,
 h6:hover::before {
   display: inline;
 }
+hr {
+  border-top: none;
+  border-bottom: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+}
