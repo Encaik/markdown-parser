@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑", sans-serif;
+}
+#md {
+  width: 50%;
+  margin: 0 auto;
+}
+h1 {
+  border-bottom: 1px solid #ccc;
+  font-size: 40px;
+  position: relative;
+}
+h2 {
+  border-bottom: 1px solid #ccc;
+  font-size: 35px;
+  position: relative;
+}
+h3 {
+  font-size: 30px;
+  position: relative;
+}
+h4 {
+  font-size: 25px;
+  position: relative;
+}
+h5 {
+  font-size: 20px;
+  position: relative;
+}
+h6 {
+  font-size: 16px;
+  position: relative;
+}
+p {
+  font-size: 16px;
+}
+h1::before {
+  content: "#";
+  color: black;
+  position: absolute;
+  left: -40px;
+  display: none;
+}
+h2::before {
+  content: "#";
+  color: black;
+  position: absolute;
+  left: -35px;
+  display: none;
+}
+h3::before {
+  content: "#";
+  color: black;
+  position: absolute;
+  left: -30px;
+  display: none;
+}
+h4::before {
+  content: "#";
+  color: black;
+  position: absolute;
+  left: -25px;
+  display: none;
+}
+h5::before {
+  content: "#";
+  color: black;
+  position: absolute;
+  left: -20px;
+  display: none;
+}
+h6::before {
+  content: "#";
+  color: black;
+  position: absolute;
+  left: -16px;
+  display: none;
+}
+h1:hover::before,
+h2:hover::before,
+h3:hover::before,
+h4:hover::before,
+h5:hover::before,
+h6:hover::before {
+  display: inline;
+}
