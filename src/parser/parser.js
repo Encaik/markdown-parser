@@ -26,7 +26,14 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
     else if (/^(-|_|\*){3}/.test(variable[index])) {
       _h.push(`<hr/>`);
     }
-    // 字体
+    // 斜体
+    else if (/^(_|\*){1}[^_|\*]+(_|\*){1}$/.test(variable[index])) {
+      _h.push(`<i>${variable[index].replace(/(_|\*){1}/g, "")}</i>`);
+    }
+    // 加粗
+    else if (/^(_|\*){2}[^_|\*]+(_|\*){2}$/.test(variable[index])) {
+      _h.push(`<b>${variable[index].replace(/(_|\*){2}/g, "")}</b>`);
+    }
     // 链接
     // 图片
     // 嵌套区块
