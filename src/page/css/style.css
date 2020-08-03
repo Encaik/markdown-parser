@@ -92,3 +92,10 @@ hr {
   border-left: none;
   border-right: none;
 }
+code {
+  background-color: #ddd;
+  color: #222;
+  border-radius: 3px;
+  padding: 0 5px;
+  margin: 0 3px;
+}
