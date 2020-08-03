@@ -34,6 +34,10 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
     else if (/^(_|\*){2}[^_|\*]+(_|\*){2}$/.test(variable[index])) {
       _h.push(`<b>${variable[index].replace(/(_|\*){2}/g, "")}</b>`);
     }
+    // 删除
+    else if (/^~{2}[^~]+~{2}$/.test(variable[index])) {
+      _h.push(`<s>${variable[index].replace(/~{2}/g, "")}</s>`);
+    }
     // 链接
     else if (/^\[.*\]\(.*\)$/.test(variable[index])) {
       let text = variable[index].match(/\[.*\]/)[0].replace(/(\[|\])/g, "");
@@ -50,6 +54,7 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
     else if (/^\`{3}/.test(variable[index])) {
       let code = [];
       for (let row = index + 1; row < variable.length; row++) {
+        console.log(variable[row]);
         if (!/^\`{3}/.test(variable[row])) {
           code.push(variable[row]);
         } else {
@@ -57,7 +62,9 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
           break;
         }
       }
-      _h.push(`<pre>${code.join("\n")}</pre>`);
+      code = code.join("\\n");
+      console.log(code);
+      _h.push(`<pre>${code}</pre>`);
     }
     // 代码行
     else if (/\`[^_|\*]+\`/.test(variable[index])) {
