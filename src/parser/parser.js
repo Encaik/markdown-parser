@@ -35,7 +35,17 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
       _h.push(`<b>${variable[index].replace(/(_|\*){2}/g, "")}</b>`);
     }
     // 链接
+    else if (/^\[.*\]\(.*\)$/.test(variable[index])) {
+      let text = variable[index].match(/\[.*\]/)[0].replace(/(\[|\])/g, "");
+      let href = variable[index].match(/\(.*\)/)[0].replace(/(\(|\))/g, "");
+      _h.push(`<a href='${href}'>${text}</a>`);
+    }
     // 图片
+    else if (/^\!\[.*]\(.*\)$/.test(variable[index])) {
+      let text = variable[index].match(/\[.*\]/)[0].replace(/(\[|\])/g, "");
+      let href = variable[index].match(/\(.*\)/)[0].replace(/(\(|\))/g, "");
+      _h.push(`<img src='${href}' width='100%' alt='${text}'/>`);
+    }
     // 嵌套区块
     // 列表
     // 表格
