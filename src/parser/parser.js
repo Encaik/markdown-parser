@@ -64,7 +64,7 @@ fs.readFile("./src/markdown/index.md", (err, data) => {
       }
       code = code.join("\\n");
       console.log(code);
-      _h.push(`<pre>${code}</pre>`);
+      _h.push(`<pre class='javascript'>${code}</pre>`);
     }
     // 代码行
     else if (/\`[^_|\*]+\`/.test(variable[index])) {
